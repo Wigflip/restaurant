@@ -281,12 +281,17 @@ function itemModal() {
       } else {
         const currentItem = basketArr.find((item) => item.itemId === id);
         if (currentItem) {
-          currentItem.itemQuantity += setQuantity;
-          currentItem.itemPrice += price;
+          if (currentItem.itemQuantity < 10) {
+            currentItem.itemQuantity += setQuantity;
+            currentItem.itemPrice += price;
+            orderNotification("update");
+          } else {
+            orderNotification("max");
+          }
           orderNotification(currentItem);
         } else {
           basketArr.push(itemOrder);
-          orderNotification();
+          orderNotification("add");
         }
       }
       displayBasket();
@@ -324,11 +329,16 @@ function updatePrice(quantity, price) {
 }
 
 //////////// Order notification
-function orderNotification(update) {
+function orderNotification(type) {
   const notification = document.querySelector(".order-note");
   //Can omit curly braces for single line statements. NOT BEST PRATICE
-  if (update) notification.textContent = "Order updated";
-  else notification.textContent = "Order added";
+  if (type === "update") {
+    notification.textContent = "Order updated";
+  } else if (type === "max") {
+    notification.textContent = "Max order limit reached";
+  } else if (type === "add") {
+    notification.textContent = "Order added";
+  }
 
   notification.style.display = "block";
   //BETTER WAY TO DO THIS?
