@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html class="box-border">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Nando's order</title>
+        <link rel="stylesheet" href="nandos.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script defer src="nandos-script.js"></script>
+    </head>
+    <body style="height: 820px" class="h-screen select-none max-w-7xl m-auto relative">
+        <!-- OVERLAY FOR MODAL POPUPS -->
+        <div class="modal-overlay w-full h-screen bg-black opacity-70 z-10 hidden absolute"></div>
+        <!-- ORDER NOTIFICATION POPUP -->
+        <div class="order-note absolute right-0 top-14 p-2 z-10 bg-lime-400 hidden"></div>
+        <nav class="h-20 flex bg-green-600 text-white p-4 items-center">
+            <span class="nav-btn p-2 --open" data-type="starter">Starters</span>
+            <span class="nav-btn p-2" data-type="main">Mains</span>
+        </nav>
+        <main style="height: 754px;" class="bg-teal-50 w-auto relative flex">
+            <!-- NEED FIXED HEIGHT TO SCROLL PROPERLY -->
+            <div class="mainMenu grid grid-cols-3 gap-y-32 p-6 pt-32 w-3/4 self-start justify-items-center overflow-auto h-full"></div>
+            <div class="mainOrder order-slider w-1/4 bg-teal-50 pr-6 relative h-full">
+                <div class="relative flex flex-wrap bg-yellow-100 shadow-lg p-4 mt-32 rounded-lg">
+                    <!-- "absolute" instead of "fixed" as fixed works related to the window, not the parent element -->
+                    <div class="flex flex-grow text-xl font-bold pb-3 text-amber-500 border-b-2 border-orange-100">
+                        <span>Your Order:</span>
+                        <span class="total ml-auto">£0.00</span>
+                    </div>
+                    <div style="max-height: 420px;" class="order-content h-auto basis-full overflow-auto pt-3"></div>
+                </div>
+            </div>
+        </main>
+    <!-- <script src="nandos-script.js"></script> -->
+    </body>
+</html>
