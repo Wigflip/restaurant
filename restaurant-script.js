@@ -401,7 +401,7 @@ mainMenu.addEventListener("click", function (e) {
   const target = e.target.closest(".item");
 
   //guard - IS THERE A BETTER WAY OF DOING THIS?
-  if (!target.dataset.menutype) return;
+  if (!target) return;
   else itemModal.call(target);
 });
 
@@ -480,7 +480,7 @@ orderContent.addEventListener("click", function (e) {
     const btnType = target.closest(".quantity-btn").dataset.type;
     //Find correct item to alter
     const item = basketArr.find((cur) => cur.itemId === orderId);
-    //Desctruct obejects for use (REWRITE THIS)
+    //Desctruct objects for use (REWRITE THIS)
     const { itemPrice, itemQuantity } = item;
     //Get updated quantity
     const updatedQuantity = updateQuantity(btnType, itemQuantity);
