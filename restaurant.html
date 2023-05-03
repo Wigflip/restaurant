@@ -8,10 +8,31 @@
     <link rel="stylesheet" href="nandos.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="restaurant-script.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap');
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              'rubik': ["Rubik", "sans-serif"],
+            },
+            colors: {
+              'my-brown': '#804D00',
+              'secondary': '#FFF9EA',
+              'secondary2': '#FFF7E1',
+              'important': '#AF938A',
+              'off-white': '#FFFEF6',
+            },
+          },
+        },
+      };
+    </script>
   </head>
   <body
     style="height: 820px"
-    class="h-screen select-none max-w-7xl m-auto relative"
+    class="h-screen select-none max-w-7xl m-auto relative font-rubik"
   >
     <!-- OVERLAY FOR MODAL POPUPS -->
     <div
@@ -19,20 +40,20 @@
     ></div>
     <!-- ORDER NOTIFICATION POPUP -->
     <div
-      class="order-note absolute right-0 top-14 p-2 z-10 bg-lime-400 hidden"
+      class="order-note absolute right-0 top-14 p-2 z-10 bg-secondary2 hidden"
     ></div>
-    <nav class="h-20 flex bg-green-600 text-white p-4 items-center">
+    <nav class="h-20 flex bg-secondary2 text-white p-4 items-center">
       <span class="nav-btn p-2 --open" data-type="starter">Starters</span>
       <span class="nav-btn p-2" data-type="main">Mains</span>
     </nav>
-    <main style="height: 754px" class="bg-teal-50 w-auto relative flex">
+    <main style="height: 754px" class="bg-off-white w-auto relative flex">
       <!-- NEED FIXED HEIGHT TO SCROLL PROPERLY -->
       <div
         class="mainMenu grid grid-cols-3 gap-y-32 p-6 pt-32 w-3/4 self-start justify-items-center overflow-auto h-full"
       ></div>
-      <div class="mainOrder order-slider w-1/4 bg-teal-50 pr-6 relative h-full">
+      <div class="mainOrder order-slider w-1/4 pr-6 relative h-full">
         <div
-          class="relative flex flex-wrap bg-yellow-100 shadow-lg p-4 mt-32 rounded-lg"
+          class="relative flex flex-wrap bg-secondary shadow-lg p-4 mt-32 rounded-lg"
         >
           <!-- "absolute" instead of "fixed" as fixed works related to the window, not the parent element -->
           <div
